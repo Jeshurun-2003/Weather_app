@@ -2,7 +2,7 @@ const express = require("express");
 const axios = require("axios");
 require("dotenv").config();
 const app = express();
-const port = 3001;
+const port = 3000;
 
 app.use(express.static("public"));
 
@@ -12,7 +12,7 @@ app.get("/weather", async(req,res) => {
     const city = req.query.city;
 
     try{
-        const response = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`);
+        const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
         res.json(response.data);
     }
     catch(error){
